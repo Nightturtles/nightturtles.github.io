@@ -1,0 +1,123 @@
+<html>
+
+	<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	</head>
+	<body bgcolor="#0000FF" style="padding: 0px 0px 0px 10px;">
+		<div class="container">
+			<form name="theForm" id"theForm" action="javascript:httpGetAsync();" method="get">
+				<fieldset>
+					<div class="container" style="padding: 50px 0px 0px 0px;">
+				    	<!-- Example row of columns -->
+				    	<div class="row">
+				        	<div class="col-xs-5">
+				        		Ingredient:<br>
+					        	<div class="form-group">
+		            				<input id="ingredient_1" type="text" placeholder="Ingredient" class="form-control" name="ingredient_1">
+		            			</div>	
+				        	</div>
+
+				        	<div class="col-xs-2">
+				        		Qty:<br>
+				        		<div class="form-group">
+	            					<input id="qty_1" type="text" placeholder="Qty" class="form-control" name="qty_1">
+	            				</div>	
+				       		</div>
+
+				        	<div class="col-xs-5">
+				        		Units:<br>
+				        			<div class="form-group">
+  										<div class="input-group">
+    										<span class="input-group-btn">
+      											<select class="form-control" name="unit_1" id="unit_1">
+													<option value="cup">Cup</option>
+													<option value="tsp">Tsp</option>
+													<option value="tbs">Tbs</option>
+												</select>
+											</span>
+										</div>	
+									</div>
+				        	</div>
+				    	</div>
+			    	</div>
+				    <div class="container" style="padding: 10px 0px 0px 0px;">
+				    	<!-- Example row of columns -->
+				    	<div class="row">
+				        	<div class="col-xs-5">
+				        		<div class="form-group">
+	            					<input id="ingredient_2" type="text" placeholder="Ingredient" class="form-control" name="ingredient_2">
+	            				</div>	
+				        	</div>
+				        	<div class="col-xs-2">
+				        		<div class="form-group">
+	            					<input id="qty_2" type="text" placeholder="Qty" class="form-control" name="qty_2">
+	            				</div>	
+				      		</div>
+				        	<div class="col-xs-5">
+				        		<div class="form-group">
+  										<div class="input-group">
+    										<span class="input-group-btn">
+      											<select class="form-control" name="unit_2" id="unit_2">
+													<option value="cup">Cup</option>
+													<option value="tsp">Tsp</option>
+													<option value="tbs">Tbs</option>
+												</select>
+											</span>
+										</div>	
+									</div>
+				        	</div>
+				    	</div>
+			    	</div>
+			    	<div class="container" style="padding: 10px 0px 0px 0px;">
+				    	<!-- Example row of columns -->
+
+					    	<div align="center">
+					    		<input type="submit" value="Submit">
+					    	</div>
+
+			    	</div>
+			    </fieldset>
+		    </form>
+		</div>
+		<!-- Latest compiled and minified JavaScript -->
+
+<script language="javascript" type="text/javascript">
+
+
+function httpGetAsync(theUrl, callback)
+{
+	 var yummlyId = "_app_id=6c0d87c0&"
+	 var yummlyKey = "_app_key=93ce07ba04a28bbd4b2734c52c617156&"
+	 var theUrl = ("http://api.yummly.com/v1/api/recipes?" + yummlyId + yummlyKey + "q=&" + "allowedIngredient[]=" + theForm.ingredient_1.value + "&allowedIngredient[]=" + theForm.ingredient_2.value);
+	 
+function callback(param){
+
+	if (param === xmlHttp.responseText) {
+			window.location.href = theUrl;
+		}
+	else {
+			alert("hilo");
+		}
+}
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+};
+</script>
+<!-- <input type="button" value="Asynchronous" onClick="httpGetAsync('http://api.yummly.com/v1/api/recipes?_app_id=6c0d87c0&_app_key=93ce07ba04a28bbd4b2734c52c617156&q=cookie&allowedIngredient[]=cinnamon&allowedIngredient[]=cognac');"> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></script>
+
+	</body>
+</html>
+
